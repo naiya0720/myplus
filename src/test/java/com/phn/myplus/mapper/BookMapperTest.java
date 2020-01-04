@@ -27,18 +27,27 @@ public class BookMapperTest {
     public void setUp() throws Exception {
     }
 
+    /**
+     *   查询所有不分页
+     */
     @Test
     public void selectAllTest(){
         List<Book> books = bookMapper.selectList(null);
         books.forEach(System.out::println);
     }
 
+    /**
+     *   删除单个
+     */
     @Test
     public void deleteTest(){
         int i = bookMapper.deleteById(7);
         System.out.println("i   >>>>>>:   "+i);
     }
 
+    /**
+     *   新增
+     */
     @Test
     public void insertTest(){
         Book book = new Book(7,"金庸",100f,"哈哈哈哈","jushf");
