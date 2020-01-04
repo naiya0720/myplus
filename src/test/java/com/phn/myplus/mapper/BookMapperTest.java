@@ -55,4 +55,24 @@ public class BookMapperTest {
         System.out.println("insert  >>>>>>:   "+insert);
     }
 
+
+    /**
+     *   修改单个
+     */
+    @Test
+    public void updateTest(){
+        //查询单个
+        Book book1 = bookMapper.selectById(7);
+        System.out.println("修改前：》》》》》》  "+book1);
+        Book book = new Book();
+        book.setBookid(7);
+        book.setBookname("神雕侠侣");
+        book.setBookimage("45456");
+        //  修改单个，会自动根据标识列去修改相应字段
+        bookMapper.updateById(book);
+        Book book2 = bookMapper.selectById(7);
+        System.out.println("修改后：》》》》》》  "+book2);
+    }
+
+
 }
