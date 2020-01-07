@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     #1.JDBC
@@ -47,4 +48,7 @@ spring:
         login-password: admin
         allow: 127.0.0.1
         #deny: 192.168.1.100
-
+server:
+  port: 8080
+  servlet:
+    context-path: /mybplus
