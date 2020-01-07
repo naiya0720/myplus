@@ -1,0 +1,25 @@
+/*【列表查询】搜索栏公共样式*/
+.layui-condition{position:relative;margin: 0 auto;padding:0;}
+.layui-form-item{margin-bottom: 8px}
+.layui-form-item .layui-inline{margin-right: 0px;margin-bottom: 0px;}
+.layui-form-label{float:left;display: block;padding: 9px 15px;}
+.layui-form-item .layui-input-inline{margin-right:0px;}
+/*font-awesome字体图标样式*/
+.fa-right{margin-right:8px;}
+.fa-position-top-2x{top:-10px;}
+/*弹出层自定义样式*/
+.layui-custom-row{margin-left:15px;}
+.layui-custom-bottom{float:right;text-align:right;border-top:1px solid #e6e6e6;height:50px;line-height:50px;background:#F8F8F8;width:100%;position:absolute;bottom:0px;}
+.layui-custom-bottom>div{position:relative;top:6px;right:10px;}
+.layui-custom-col{display:block;float:left;width:300px;margin-bottom:4px;}
+.layui-custom-col-middle{height:34px;line-height:34px;padding-left:10px;border:1px solid #e6e6e6;word-wrap: break-word;word-break: break-all;}
+#detailPanel{padding: 0px 15px; margin-top: 10px;}
+#detailPanel>form>.layui-row{margin-bottom: 4px;}
+/*layui table行的悬停样式*/
+.layui-table tbody tr:hover,.layui-table-hover{background-color:#ffff99;color:#000000;}
+.layui-table .layui-table-click{background-color:#ffff99;}
+/*权限管理*/
+#tb_rolelist.layui-table, .layui-table-view {margin: 0;}
+#authTree .panel-body {height: 530px;background-color: #23262E}
+#authTree .panel-body > div:first-child {width: 100%;border-bottom: 2px solid #fff;height: 50px;line-height: 50px;text-align: center;font-size: 16px;color: #fff;}
+.layui-table-tool-self {display: none;}
