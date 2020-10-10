@@ -16,6 +16,29 @@ layui.use(['form', 'element', 'layer', 'table', 'jquery'], function() {
         query();
     });
 
+    table.on("tool(tb_userlist)",function (obj) {
+        var data = obj.data;
+        var even = obj.event;
+        if(even==="del"){
+            layer.confirm('真的删除行么', function(index){
+                // 删除当前行数据
+                obj.del();
+                //向服务端发送删除指令
+                var msg = deleteBook(data.bookid);
+                if(msg.flag){
+                    layer.msg(msg.msg, {icon: 1});
+                }else{
+                    layer.msg(msg.msg, {icon: 2});
+                }
+                // 更新缓存
+                layer.close(index);
+            });
+        }if(even==="edit"){
+
+        }
+    })
+
+
 });
 
 //table初始化
@@ -50,7 +73,6 @@ function tableInit() {
                     width: 186,
                     toolbar: '#toolbar'
                 }
-
             ]
         ]
     });
@@ -84,3 +106,20 @@ function query() {
         }
     })
 }
+
+function deleteBook(id) {
+    var messge = ""
+    $.ajax({
+        url: 'delBook',
+        method: 'POST',
+        async:false,
+        data:{
+            bookid: id
+        },
+        success:function (msg) {
+            messge = msg
+        }
+    })
+    return messge;
+}
+

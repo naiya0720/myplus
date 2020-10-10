@@ -1,7 +1,5 @@
 package com.phn.myplus.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.phn.myplus.model.Book;
 import com.phn.myplus.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,31 +29,32 @@ public class BookController {
     @ResponseBody
     @RequestMapping("/queryAll")
     public Map<String,Object> queryBookAll(Book book){
-        if("".equals(book.getBookname()))
-            book.setBookname(null);
-            Wrapper<Book> bookWrapper = new Wrapper<Book>() {
-                @Override
-                public Book getEntity() {
-                    return book;
-                }
-
-                @Override
-                public MergeSegments getExpression() {
-                    return null;
-                }
-
-                @Override
-                public String getSqlSegment() {
-                    return null;
-                }
-            };
-            List<Book> books = bookService.selectBookAll(bookWrapper);
-            Map<String,Object> maps = new HashMap<>();
-            maps.put("data",books);
-            maps.put("message",1);
-            maps.put("success",true);
-            maps.put("total",3);
-            return maps;
+        List<Book> books = bookService.selectBookAll(book);
+        Map<String,Object> maps = new HashMap<>();
+        maps.put("data",books);
+        maps.put("message",1);
+        maps.put("success",true);
+        maps.put("total",3);
+        return maps;
     }
+
+
+    @ResponseBody
+    @RequestMapping("/delBook")
+    public Map<String,Object> delBook(Integer bookid){
+        int i = bookService.deletBook(bookid);
+        Map<String,Object> maps = new HashMap<>();
+        if(i>0){
+            maps.put("msg","删除成功");
+            maps.put("flag",true);
+            maps.put("code",1);
+        }else {
+            maps.put("msg","删除失败");
+            maps.put("flag",false);
+            maps.put("code",0);
+        }
+        return maps;
+    }
+
 
 }

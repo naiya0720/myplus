@@ -4,7 +4,6 @@
     <#include "../common/head.ftl"/>
     <script type="text/javascript" src="js/book/bookList.js" charset="UTF-8"></script>
 </head>
-<body>
 <body style="padding-top:12px;">
 <div class="layui-fluid">
     <div class="layui-condition">
