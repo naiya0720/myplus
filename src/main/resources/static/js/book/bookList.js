@@ -16,27 +16,6 @@ layui.use(['form', 'element', 'layer', 'table', 'jquery'], function() {
         query();
     });
 
-    table.on("tool(tb_userlist)",function (obj) {
-        var data = obj.data;
-        var even = obj.event;
-        if(even==="del"){
-            layer.confirm('真的删除行么', function(index){
-                // 删除当前行数据
-                obj.del();
-                //向服务端发送删除指令
-                var msg = deleteBook(data.bookid);
-                if(msg.flag){
-                    layer.msg(msg.msg, {icon: 1});
-                }else{
-                    layer.msg(msg.msg, {icon: 2});
-                }
-                // 更新缓存
-                layer.close(index);
-            });
-        }if(even==="edit"){
-
-        }
-    })
 
 
 });
@@ -103,6 +82,32 @@ function query() {
             dataName: 'data', //数据列表的字段名称，默认：data
         },
         done: function (res, curr, count) {
+        },
+
+
+
+    });
+    //// 监听工具条
+    // 注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+    table.on("tool(tb_userlist)",function (obj) {
+        var data = obj.data;
+        var even = obj.event;
+        if(even==="del"){
+            layer.confirm('真的删除行么', function(index){
+                // 删除当前行数据
+                obj.del();
+                //向服务端发送删除指令
+                var msg = deleteBook(data.bookid);
+                if(msg.flag){
+                    layer.msg(msg.msg, {icon: 1});
+                }else{
+                    layer.msg(msg.msg, {icon: 2});
+                }
+                // 更新缓存
+                layer.close(index);
+            });
+        }if(even==="edit"){
+
         }
     })
 }
