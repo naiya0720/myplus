@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.phn.myplus.mapper.SystemMenuMapper">
+
+    <sql id="BASE_COLUMN">
+        id,pid,title,icon,href,target,sort,status,remark,create_at
+    </sql>
+
+    <select id="getMenuByStatusAndSort" resultType="com.phn.myplus.model.SystemMenu">
+        SELECT <include refid="BASE_COLUMN"/> FROM system_menu WHERE status = 1 ORDER BY sort DESC
+    </select>
+</mapper>
