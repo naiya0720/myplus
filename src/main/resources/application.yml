@@ -56,4 +56,4 @@ server:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations:
+  mapper-locations: com/phn/myplus/mapper/xml/*.xml
