@@ -21,9 +21,18 @@ public class BookController {
     @Autowired
     private IBookService bookService;
 
-    @RequestMapping("/")
+    @RequestMapping("/bookList")
     public String toBookList(){
         return "book/bookList";
+    }
+
+    /**
+     *  首页
+     * @return
+     */
+    @RequestMapping("/")
+    public String toIndex(){
+        return "layuimini/index";
     }
 
     @ResponseBody
@@ -54,6 +63,15 @@ public class BookController {
             maps.put("code",0);
         }
         return maps;
+    }
+
+    /**
+     *  新增修改页面
+     * @return
+     */
+    @RequestMapping("/insertAndEditBookView")
+    public String insertAndEditBookView(){
+        return "book/bookInfo";
     }
 
 
